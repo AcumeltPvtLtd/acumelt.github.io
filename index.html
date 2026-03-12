@@ -90,33 +90,92 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 							</div>
 						</div>
 						
-						<div class="col-md-7"> 
+<div class="col-md-7">
     <style>
-        /* Custom styles to ensure the links look professional at a larger size */
-        #main-menu .menu-item a {
-            font-size: 1.2rem; /* Increases size (approx 19px-20px) */
-            font-weight: 500;   /* Makes text slightly bolder for readability */
-            padding: 8px 15px;  /* Adds clickable area around the text */
-            color: #333;        /* Standard dark gray; change to your brand color */
-            text-decoration: none;
-            transition: all 0.3s ease; /* Smooth hover transition */
+        /*
+         * Custom CSS for 3D Interactive Menu Enhancement
+         *
+         * Key modifications:
+         * 1. Increased font size and padding for a more prominent menu.
+         * 2. Implementation of CSS 3D transforms (perspective, translateZ, rotate) for interactivity.
+         * 3. Enhanced hover state with a "pop-out" shadow effect.
+         * 4. Ensure smooth transitions across all properties.
+         */
+
+        /* ================================================================================== */
+        /* BASE MENU STYLING */
+        /* ================================================================================== */
+
+        /* Define the 3D space for the menu container */
+        #main-menu {
+            perspective: 1000px; /* Establishes the viewing depth for the 3D effect */
+            gap: 20px !important; /* Increase gap between items for better spacing */
         }
+
+        #main-menu .menu-item {
+            /* Keep the item position relative for absolute positioning of effects if needed */
+            position: relative;
+            /* Allow child element (link) to participate in 3D transformations */
+            transform-style: preserve-3d;
+        }
+
+        #main-menu .menu-item a {
+            font-size: 1.5rem; /* Increased size (approx 24px) for prominence */
+            font-weight: 600;   /* Bolder text for better visibility */
+            padding: 10px 20px; /* Increased padding for larger clickable area */
+            color: #333;        /* Standard dark gray */
+            text-decoration: none;
+            display: inline-block; /* Required to apply transforms and padding consistently */
+            border-radius: 6px;
+            /* Initial state: No transform, smooth transition */
+            transform: translateZ(0) rotateY(0deg) scale(1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Professional "ease-in-out" curve */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle initial shadow for depth */
+        }
+
+        /* ================================================================================== */
+        /* 3D INTERACTIVITY ON HOVER */
+        /* ================================================================================== */
 
         #main-menu .menu-item a:hover {
             color: #007bff;     /* Changes color on hover */
-            background-color: rgba(0,0,0,0.05); /* Light background highlight */
-            border-radius: 4px;
+            background-color: #f8f9fa; /* Light background highlight */
+
+            /* --- 3D POP-OUT EFFECT --- */
+            /* 1. translateZ(20px): Moves the element 20 pixels forward towards the viewer. */
+            /* 2. scale(1.05): Enlarges the item slightly. */
+            /* 3. rotateY(-3deg): Adds a subtle rotation on the Y-axis for extra depth. */
+            transform: translateZ(20px) scale(1.05) rotateY(-3deg);
+
+            /* --- ENHANCED SHADOW EFFECT --- */
+            /* Lifts the element off the page, enhancing the 3D feel */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 5px 10px rgba(0,0,0,0.15);
         }
 
-        /* Responsive adjustment: reduce gap on smaller screens so it doesn't break */
+        /* ================================================================================== */
+        /* ACCESSIBILITY AND RESPONSIVENESS */
+        /* ================================================================================== */
+
+        /* Responsive adjustment: reduce size and gap on smaller screens */
         @media (max-width: 992px) {
-            #main-menu { gap: 10px !important; }
-            #main-menu .menu-item a { font-size: 1rem; }
+            #main-menu {
+                gap: 10px !important; /* Reduce gap on smaller screens */
+            }
+            #main-menu .menu-item a {
+                font-size: 1rem; /* Adjust font size back to standard for mobile */
+                padding: 8px 15px;
+                transform: translateZ(0) rotateY(0deg) scale(1); /* Disable 3D effect on hover for smaller screens */
+            }
+            #main-menu .menu-item a:hover {
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Revert shadow on hover for mobile */
+                transform: translateZ(0) scale(1.05) rotateY(0deg); /* Apply simple scale on hover for mobile */
+            }
         }
     </style>
 
     <nav id="site-navigation" class="main-navigation">
-        <ul id="main-menu" class="menu d-flex justify-content-center m-0 p-0 list-unstyled flex-wrap gap-3">
+        <!-- The HTML structure remains consistent with the original provided code. -->
+        <ul id="main-menu" class="menu d-flex justify-content-center m-0 p-0 list-unstyled flex-wrap">
             <li class="menu-item"><a href="/index.html" aria-current="page">Home</a></li>
             <li class="menu-item"><a href="/about.html">About Us</a></li>
             <li class="menu-item"><a href="/products.html">Products / Castings</a></li>
@@ -125,8 +184,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             <li class="menu-item"><a href="/careers.html">Careers</a></li>
             <li class="menu-item"><a href="/contact.html">Contact Us</a></li>
         </ul>
-    </nav>   
-</div>  
+    </nav>
+</div>
+						  
+						  
 						<div class="col-md-2"> 
 							<!-- Call To Action -->
 							<div class="social-navigation">
