@@ -77,242 +77,244 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <body class="royal_preloader"> 
 	<div id="page" class="site">	
 		<header id="site-header" class="site-header header-style">
-			  <!-- Main Header start -->
-			  <div class="octf-main-header"> 
-				  <div class="container">
-					<div class="octf-mainbar">
-					  <div class="row align-items-center">
-						<div class="col-md-3"> <!-- Adjusted column width for logo -->
-							<div id="site-logo" class="site-logo"> 
-								<a href="/index.html" class="logo-link" rel="home" itemprop="url">
-									<img src="https://acumelt.com/wp-content/uploads/2024/04/acument-logo.svg"  alt="Acumelt Pvt. Ltd. is a greenfield foundry based in Rajkot">
-								</a>
-							</div>
-						</div>
-						
-<div class="col-md-7">
-    <!-- VanillaTilt from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
-
-    <style>
-        /* === MODERN FOUNDRY MENU – ALWAYS HORIZONTAL, SCROLL ON MOBILE === */
-        #main-menu {
-            display: flex;
-            flex-wrap: nowrap;               /* ← crucial: never wrap */
-            justify-content: center;
-            align-items: center;
-            gap: 0.75rem;
-            margin: 0;
-            padding: 0.5rem 0;
-            list-style: none;
-            overflow-x: auto;                 /* enable horizontal scroll on small screens */
-            overflow-y: hidden;
-            white-space: nowrap;               /* ensure flex children don't wrap */
-            -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-            scrollbar-width: thin;              /* nice thin scrollbar (Firefox) */
-            perspective: 1200px;
-        }
-
-        /* hide scrollbar on webkit but keep functionality (optional) */
-        #main-menu::-webkit-scrollbar {
-            height: 4px;
-        }
-        #main-menu::-webkit-scrollbar-thumb {
-            background: #ffc107;
-            border-radius: 10px;
-        }
-        #main-menu::-webkit-scrollbar-track {
-            background: #2a2a2a;
-        }
-
-        #main-menu .menu-item {
-            flex: 0 0 auto;                    /* prevent shrinking, keep natural width */
-            transform-style: preserve-3d;
-        }
-
-        #main-menu .menu-item a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 0.6rem 1.2rem;
-            color: #ffffff;
-            text-decoration: none;
-            background: #1e1e1e;
-            border: 1px solid #3a3a3a;
-            border-radius: 40px;
-            box-shadow: 0 8px 12px -6px rgba(0,0,0,0.5), 0 0 0 1px rgba(255, 215, 0, 0.2) inset;
-            transition: all 0.2s ease;
-            white-space: nowrap;                /* text never wraps inside button */
-            position: relative;
-            overflow: hidden;
-            font-family: 'Ubuntu', sans-serif;
-        }
-
-        /* yellow dot */
-        #main-menu .menu-item a .dot {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background-color: #ffc107;
-            border-radius: 50%;
-            margin-left: 4px;
-            box-shadow: 0 0 8px #ffc107;
-            transition: transform 0.2s;
-        }
-
-        /* optional icon */
-        #main-menu .menu-item a i {
-            font-size: 1.2rem;
-            color: #ffc107;
-            transition: transform 0.2s;
-        }
-
-        #main-menu .menu-item a:hover {
-            background: #2a2a2a;
-            border-color: #ffc107;
-            color: #ffffff;
-        }
-
-        #main-menu .menu-item a:hover i,
-        #main-menu .menu-item a:hover .dot {
-            transform: scale(1.1);
-        }
-
-        /* active / current page */
-        #main-menu .menu-item a[aria-current="page"] {
-            background: #2a2a2a;
-            border-color: #ffc107;
-            box-shadow: 0 0 12px rgba(255, 193, 7, 0.5), 0 8px 12px -6px black;
-        }
-
-        /* sand‑like dot pattern (subtle) */
-        #main-menu .menu-item a::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 20% 40%, rgba(255, 215, 0, 0.1) 2px, transparent 2px),
-                        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.08) 1px, transparent 2px);
-            background-size: 30px 30px;
-            pointer-events: none;
-            border-radius: inherit;
-            opacity: 0.4;
-            z-index: 0;
-        }
-
-        #main-menu .menu-item a > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* responsive: reduce font/padding on very small screens */
-        @media (max-width: 768px) {
-            #main-menu .menu-item a {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-                gap: 4px;
-            }
-        }
-
-        /* disable tilt on mobile (via JS condition) – already handled in script */
-    </style>
-
-    <nav id="site-navigation" class="main-navigation">
-        <ul id="main-menu" class="menu">
-            <li class="menu-item"><a href="/index.html" aria-current="page"><span>Home</span><span class="dot"></span></a></li>
-            <li class="menu-item"><a href="/about.html"><span>About Us</span><span class="dot"></span></a></li>
-            <li class="menu-item"><a href="/products.html"><span>Products</span><span class="dot"></span></a></li>
-            <li class="menu-item"><a href="/infrastructure.html"><span>Infrastructure</span><span class="dot"></span></a></li>
-            <li class="menu-item"><a href="/quality.html"><span>Quality</span><span class="dot"></span></a></li>
-            <li class="menu-item"><a href="/careers.html"><span>Careers</span><span class="dot"></span></a></li>
-            <li class="menu-item"><a href="/contact.html"><span>Contact</span><span class="dot"></span></a></li>
-        </ul>
-    </nav>
-
-    <script>
-        (function() {
-            if (typeof VanillaTilt !== 'undefined') {
-                const links = document.querySelectorAll('#main-menu .menu-item a');
-                const isMobile = window.matchMedia('(max-width: 992px)').matches;
-                if (!isMobile) {
-                    VanillaTilt.init(links, {
-                        max: 8,
-                        speed: 400,
-                        scale: 1.02,
-                        glare: true,
-                        "max-glare": 0.3,
-                        gyroscope: false,
-                        perspective: 800,
-                        easing: "cubic-bezier(0.2, 0.9, 0.4, 1)",
-                        reset: true
-                    });
-                }
-                // re‑evaluate on resize (simple version)
-                window.addEventListener('resize', function() {
-                    const mobileNow = window.matchMedia('(max-width: 992px)').matches;
-                    links.forEach(link => {
-                        if (link.vanillaTilt) {
-                            if (mobileNow) link.vanillaTilt.destroy();
-                        } else {
-                            if (!mobileNow) VanillaTilt.init(link, {
-                                max: 8, speed: 400, scale: 1.02, glare: true, "max-glare": 0.3,
-                                gyroscope: false, perspective: 800,
-                                easing: "cubic-bezier(0.2, 0.9, 0.4, 1)", reset: true
-                            });
-                        }
-                    });
-                });
-            }
-        })();
-    </script>
-</div>						  
-						<div class="col-md-2"> 
-							<!-- Call To Action -->
-							<div class="social-navigation">
-								<ul class="social-list d-flex align-items-center justify-content-end m-0 p-0 list-unstyled">
-									<li><a href="https://www.linkedin.com/company/acumelt/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li>
-								</ul> 
-							</div> 
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div> 
-			  <div class="header_mobile">
-				<div class="container">
-				  <div class="mlogo_wrapper d-flex align-items-center"> 
-				     <div id="mmenu_toggle">
-                            <button></button>
-                        </div>
-					<div class="mobile_logo mx-auto">
-						<a href="/index.html" class="logo-link" rel="home" itemprop="url">
-							<img src="https://acumelt.com/wp-content/uploads/2024/04/acument-logo.svg"  alt="Acumelt Pvt. Ltd. is a greenfield foundry based in Rajkot">
-						</a>
-					</div>
-					<div class="mobile_social">
-						<ul class="social-list d-flex align-items-center justify-content-end m-0 p-0 list-unstyled"><li><a href="https://www.linkedin.com/company/acumelt/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li></ul> 
-					</div>
-				  </div> 
-				    <div class="mmenu_wrapper">
-                        <div class="mobile_nav collapse">
-							<nav class="main-menu-container">
-								<ul id="menu-main-menu" class="mobile_mainmenu list-unstyled m-0 p-0">
-									<li class="menu-item"><a href="/index.html" aria-current="page">Home</a></li>
-									<li class="menu-item"><a href="/about.html">About Us</a></li>
-									<li class="menu-item"><a href="/products.html">Products / Castings</a></li>
-									<li class="menu-item"><a href="/infrastructure.html">Infrastructure</a></li>
-									<li class="menu-item"><a href="/quality.html">Quality Assurance</a></li>
-									<li class="menu-item"><a href="/careers.html">Careers</a></li>
-									<li class="menu-item"><a href="/contact.html">Contact Us</a></li>
-								</ul>
-							</nav>  
+    <!-- Main Header start (desktop) -->
+    <div class="octf-main-header">
+        <div class="container">
+            <!-- First row: Logo + Social -->
+            <div class="octf-mainbar">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div id="site-logo" class="site-logo">
+                            <a href="/index.html" class="logo-link" rel="home" itemprop="url">
+                                <img src="https://acumelt.com/wp-content/uploads/2024/04/acument-logo.svg" alt="Acumelt Pvt. Ltd. is a greenfield foundry based in Rajkot">
+                            </a>
                         </div>
                     </div>
-				</div>
-			  </div>
-			</header>
+                    <div class="col-md-7"><!-- empty spacer --></div>
+                    <div class="col-md-2">
+                        <div class="social-navigation">
+                            <ul class="social-list d-flex align-items-center justify-content-end m-0 p-0 list-unstyled">
+                                <li><a href="https://www.linkedin.com/company/acumelt/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Second row: Navigation (full width) -->
+            <div class="row">
+                <div class="col-12">
+                    <!-- VanillaTilt from CDN -->
+                    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+                    <style>
+                        /* === MODERN FOUNDRY MENU – ALWAYS HORIZONTAL, SCROLL ON MOBILE === */
+                        #main-menu {
+                            display: flex;
+                            flex-wrap: nowrap;               /* never wrap */
+                            justify-content: center;
+                            align-items: center;
+                            gap: 0.75rem;
+                            margin: 0;
+                            padding: 0.5rem 0;
+                            list-style: none;
+                            overflow-x: auto;                 /* horizontal scroll when needed */
+                            overflow-y: hidden;
+                            white-space: nowrap;
+                            -webkit-overflow-scrolling: touch;
+                            scrollbar-width: thin;
+                            perspective: 1200px;
+                        }
+
+                        /* custom scrollbar */
+                        #main-menu::-webkit-scrollbar {
+                            height: 4px;
+                        }
+                        #main-menu::-webkit-scrollbar-thumb {
+                            background: #ffc107;
+                            border-radius: 10px;
+                        }
+                        #main-menu::-webkit-scrollbar-track {
+                            background: #2a2a2a;
+                        }
+
+                        #main-menu .menu-item {
+                            flex: 0 0 auto;                  /* prevent shrinking */
+                            transform-style: preserve-3d;
+                        }
+
+                        #main-menu .menu-item a {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            font-size: 1.1rem;
+                            font-weight: 600;
+                            padding: 0.7rem 1.5rem;
+                            color: #ffffff;
+                            text-decoration: none;
+                            background: #1e1e1e;
+                            border: 1px solid #3a3a3a;
+                            border-radius: 40px;
+                            box-shadow: 0 8px 12px -6px rgba(0,0,0,0.5), 0 0 0 1px rgba(255, 215, 0, 0.2) inset;
+                            transition: all 0.2s ease;
+                            white-space: nowrap;
+                            position: relative;
+                            overflow: hidden;
+                            font-family: 'Ubuntu', sans-serif;
+                        }
+
+                        /* yellow dot */
+                        #main-menu .menu-item a .dot {
+                            display: inline-block;
+                            width: 6px;
+                            height: 6px;
+                            background-color: #ffc107;
+                            border-radius: 50%;
+                            margin-left: 6px;
+                            box-shadow: 0 0 8px #ffc107;
+                            transition: transform 0.2s;
+                        }
+
+                        #main-menu .menu-item a i {
+                            font-size: 1.2rem;
+                            color: #ffc107;
+                            transition: transform 0.2s;
+                        }
+
+                        #main-menu .menu-item a:hover {
+                            background: #2a2a2a;
+                            border-color: #ffc107;
+                            color: #ffffff;
+                        }
+
+                        #main-menu .menu-item a:hover i,
+                        #main-menu .menu-item a:hover .dot {
+                            transform: scale(1.1);
+                        }
+
+                        /* active page */
+                        #main-menu .menu-item a[aria-current="page"] {
+                            background: #2a2a2a;
+                            border-color: #ffc107;
+                            box-shadow: 0 0 12px rgba(255, 193, 7, 0.5), 0 8px 12px -6px black;
+                        }
+
+                        /* subtle sand pattern */
+                        #main-menu .menu-item a::before {
+                            content: '';
+                            position: absolute;
+                            top: 0; left: 0; width: 100%; height: 100%;
+                            background: radial-gradient(circle at 20% 40%, rgba(255, 215, 0, 0.1) 2px, transparent 2px),
+                                        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.08) 1px, transparent 2px);
+                            background-size: 30px 30px;
+                            pointer-events: none;
+                            border-radius: inherit;
+                            opacity: 0.4;
+                            z-index: 0;
+                        }
+
+                        #main-menu .menu-item a > * {
+                            position: relative;
+                            z-index: 1;
+                        }
+
+                        /* responsive font/padding */
+                        @media (max-width: 992px) {
+                            #main-menu .menu-item a {
+                                font-size: 0.95rem;
+                                padding: 0.5rem 1rem;
+                            }
+                        }
+                    </style>
+
+                    <nav id="site-navigation" class="main-navigation">
+                        <ul id="main-menu" class="menu">
+                            <li class="menu-item"><a href="/index.html" aria-current="page"><span>Home</span><span class="dot"></span></a></li>
+                            <li class="menu-item"><a href="/about.html"><span>About Us</span><span class="dot"></span></a></li>
+                            <li class="menu-item"><a href="/products.html"><span>Products</span><span class="dot"></span></a></li>
+                            <li class="menu-item"><a href="/infrastructure.html"><span>Infrastructure</span><span class="dot"></span></a></li>
+                            <li class="menu-item"><a href="/quality.html"><span>Quality</span><span class="dot"></span></a></li>
+                            <li class="menu-item"><a href="/careers.html"><span>Careers</span><span class="dot"></span></a></li>
+                            <li class="menu-item"><a href="/contact.html"><span>Contact</span><span class="dot"></span></a></li>
+                        </ul>
+                    </nav>
+
+                    <script>
+                        (function() {
+                            if (typeof VanillaTilt !== 'undefined') {
+                                const links = document.querySelectorAll('#main-menu .menu-item a');
+                                const isMobile = window.matchMedia('(max-width: 992px)').matches;
+                                if (!isMobile) {
+                                    VanillaTilt.init(links, {
+                                        max: 8,
+                                        speed: 400,
+                                        scale: 1.02,
+                                        glare: true,
+                                        "max-glare": 0.3,
+                                        gyroscope: false,
+                                        perspective: 800,
+                                        easing: "cubic-bezier(0.2, 0.9, 0.4, 1)",
+                                        reset: true
+                                    });
+                                }
+                                window.addEventListener('resize', function() {
+                                    const mobileNow = window.matchMedia('(max-width: 992px)').matches;
+                                    links.forEach(link => {
+                                        if (link.vanillaTilt) {
+                                            if (mobileNow) link.vanillaTilt.destroy();
+                                        } else {
+                                            if (!mobileNow) VanillaTilt.init(link, {
+                                                max: 8, speed: 400, scale: 1.02, glare: true, "max-glare": 0.3,
+                                                gyroscope: false, perspective: 800,
+                                                easing: "cubic-bezier(0.2, 0.9, 0.4, 1)", reset: true
+                                            });
+                                        }
+                                    });
+                                });
+                            }
+                        })();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Header (unchanged) -->
+    <div class="header_mobile">
+        <div class="container">
+            <div class="mlogo_wrapper d-flex align-items-center">
+                <div id="mmenu_toggle">
+                    <button></button>
+                </div>
+                <div class="mobile_logo mx-auto">
+                    <a href="/index.html" class="logo-link" rel="home" itemprop="url">
+                        <img src="https://acumelt.com/wp-content/uploads/2024/04/acument-logo.svg" alt="Acumelt Pvt. Ltd. is a greenfield foundry based in Rajkot">
+                    </a>
+                </div>
+                <div class="mobile_social">
+                    <ul class="social-list d-flex align-items-center justify-content-end m-0 p-0 list-unstyled">
+                        <li><a href="https://www.linkedin.com/company/acumelt/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mmenu_wrapper">
+                <div class="mobile_nav collapse">
+                    <nav class="main-menu-container">
+                        <ul id="menu-main-menu" class="mobile_mainmenu list-unstyled m-0 p-0">
+                            <li class="menu-item"><a href="/index.html" aria-current="page">Home</a></li>
+                            <li class="menu-item"><a href="/about.html">About Us</a></li>
+                            <li class="menu-item"><a href="/products.html">Products / Castings</a></li>
+                            <li class="menu-item"><a href="/infrastructure.html">Infrastructure</a></li>
+                            <li class="menu-item"><a href="/quality.html">Quality Assurance</a></li>
+                            <li class="menu-item"><a href="/careers.html">Careers</a></li>
+                            <li class="menu-item"><a href="/contact.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 			
 			<div id="content" class="site-content">
 			<div class="container">
