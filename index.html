@@ -91,100 +91,164 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 						
 <div class="col-md-7">
+    <!-- Load vanilla-tilt from CDN (if not already loaded) -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
     <style>
-        /*
-         * Advanced CSS for Modern 3D Interactive Menu (Foundry Theme)
-         *
-         * Key modifications for "green sand casting foundry" aesthetic:
-         * 1. Color Palette: Black, dark gray, and bright yellow/orange accents for industrial feel.
-         * 2. Enhanced 3D Effect: More pronounced "pop-out" on hover with rotation and glowing shadow.
-         * 3. Prominence: Increased font size and padding for a main homepage navigation.
-         */
-
-        /* ================================================================================== */
-        /* BASE MENU STYLING */
-        /* ================================================================================== */
-
-        /* Define the 3D space for the menu container */
+        /* === MODERN FOUNDRY MENU – HORIZONTAL, 3D TILT, DOTS === */
         #main-menu {
-            perspective: 1200px; /* Stronger perspective for a deeper 3D effect */
-            gap: 20px !important; /* Increase gap for better visual separation */
-            /* Ensure children can be transformed in 3D space */
+            perspective: 1200px;
+            gap: 0.75rem !important;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #main-menu .menu-item {
+            list-style: none;
             transform-style: preserve-3d;
         }
 
         #main-menu .menu-item a {
-            font-size: 1.8rem; /* Significantly increased size for prominence */
-            font-weight: 700;   /* Extra bold for impact */
-            padding: 12px 25px; /* Increased padding for larger clickable area */
-            color: #333;        /* Dark gray for text */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            color: #ffffff;
             text-decoration: none;
-            display: inline-block; /* Required for transforms */
-            border-radius: 8px;
-            background-color: #f8f9fa; /* Light background for contrast */
-
-            /* --- Initial 3D state and transition --- */
-            /* Set initial position to 0, add a very subtle initial rotation/shadow for depth */
-            transform: translateZ(0) rotateX(0deg) scale(1);
-            transition: all 0.35s cubic-bezier(0.2, 0.7, 0.3, 1); /* Professional "springy" transition curve */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Subtle initial shadow for depth */
-            position: relative; /* For pseudo-element effects if needed later */
+            background: #1e1e1e;               /* deep black base */
+            border: 1px solid #3a3a3a;
+            border-radius: 40px;                /* pill shape – modern */
+            box-shadow: 0 8px 12px -6px rgba(0,0,0,0.5), 0 0 0 1px rgba(255, 215, 0, 0.2) inset;
+            transition: all 0.2s ease;
+            white-space: nowrap;                 /* keep text in one line */
+            position: relative;
+            overflow: hidden;
+            font-family: 'Ubuntu', sans-serif;  /* matches your site font */
         }
 
-        /* ================================================================================== */
-        /* 3D INTERACTIVITY ON HOVER (Foundry/Heat Theme) */
-        /* ================================================================================== */
+        /* yellow dot (brand element) */
+        #main-menu .menu-item a .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #ffc107;
+            border-radius: 50%;
+            margin-left: 6px;
+            box-shadow: 0 0 8px #ffc107;
+            transition: transform 0.2s;
+        }
 
+        /* optional icon (can be used, but we keep simple) */
+        #main-menu .menu-item a i {
+            font-size: 1.2rem;
+            color: #ffc107;
+            transition: transform 0.2s;
+        }
+
+        /* hover state (fallback, but tilt will also apply) */
         #main-menu .menu-item a:hover {
-            color: #fff;        /* White text color on hover */
-            background-color: #ffc107; /* Bright yellow/orange accent (simulates heat) */
-
-            /* --- 3D POP-OUT EFFECT --- */
-            /* 1. translateZ(30px): Lifts the element significantly closer to the viewer. */
-            /* 2. scale(1.1): Enlarges the item slightly more for emphasis. */
-            /* 3. rotateX(-5deg) rotateY(2deg): Adds a subtle rotation for a physical "object lifting" effect. */
-            transform: translateZ(30px) scale(1.1) rotateX(-5deg) rotateY(2deg);
-
-            /* --- GLOWING SHADOW EFFECT --- */
-            /* Simulates a light source from the item itself (like molten metal glow) */
-            box-shadow:
-                0 0 15px rgba(255, 193, 7, 0.7), /* Yellow inner glow */
-                0 15px 30px rgba(0,0,0,0.3),    /* Stronger shadow underneath */
-                0 5px 10px rgba(0,0,0,0.2);     /* Lighter shadow for mid-range depth */
+            background: #2a2a2a;
+            border-color: #ffc107;
+            color: #ffffff;
         }
 
-        /* ================================================================================== */
-        /* RESPONSIVENESS */
-        /* ================================================================================== */
+        #main-menu .menu-item a:hover i,
+        #main-menu .menu-item a:hover .dot {
+            transform: scale(1.1);
+        }
 
-        /* Responsive adjustment: reduce size and gap on smaller screens */
+        /* active / current page */
+        #main-menu .menu-item a[aria-current="page"] {
+            background: #2a2a2a;
+            border-color: #ffc107;
+            box-shadow: 0 0 12px rgba(255, 193, 7, 0.5), 0 8px 12px -6px black;
+        }
+
+        /* sand / dot background effect (subtle) */
+        #main-menu .menu-item a::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 40%, rgba(255, 215, 0, 0.1) 2px, transparent 2px),
+                        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.08) 1px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            border-radius: inherit;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        /* ensure text is above pseudo */
+        #main-menu .menu-item a > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === responsive === */
         @media (max-width: 992px) {
             #main-menu {
-                gap: 10px !important; /* Reduce gap on smaller screens */
+                gap: 0.5rem !important;
             }
             #main-menu .menu-item a {
-                font-size: 1.1rem; /* Adjust font size back to standard for mobile */
-                padding: 8px 15px;
-                transform: translateZ(0) scale(1); /* Disable intense 3D effect on hover for smaller screens */
+                font-size: 0.95rem;
+                padding: 0.5rem 1rem;
+                white-space: nowrap;
             }
-            #main-menu .menu-item a:hover {
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Revert shadow on hover for mobile */
-                transform: translateZ(0) scale(1.05); /* Apply simple scale on hover for mobile */
-            }
+            /* disable 3D tilt on mobile via JS (we destroy it) */
         }
     </style>
 
     <nav id="site-navigation" class="main-navigation">
         <ul id="main-menu" class="menu d-flex justify-content-center m-0 p-0 list-unstyled flex-wrap">
-            <li class="menu-item"><a href="/index.html" aria-current="page">Home</a></li>
-            <li class="menu-item"><a href="/about.html">About Us</a></li>
-            <li class="menu-item"><a href="/products.html">Products / Castings</a></li>
-            <li class="menu-item"><a href="/infrastructure.html">Infrastructure</a></li>
-            <li class="menu-item"><a href="/quality.html">Quality Assurance</a></li>
-            <li class="menu-item"><a href="/careers.html">Careers</a></li>
-            <li class="menu-item"><a href="/contact.html">Contact Us</a></li>
+            <li class="menu-item"><a href="/index.html" aria-current="page"><span>Home</span><span class="dot"></span></a></li>
+            <li class="menu-item"><a href="/about.html"><span>About Us</span><span class="dot"></span></a></li>
+            <li class="menu-item"><a href="/products.html"><span>Products</span><span class="dot"></span></a></li>
+            <li class="menu-item"><a href="/infrastructure.html"><span>Infrastructure</span><span class="dot"></span></a></li>
+            <li class="menu-item"><a href="/quality.html"><span>Quality</span><span class="dot"></span></a></li>
+            <li class="menu-item"><a href="/careers.html"><span>Careers</span><span class="dot"></span></a></li>
+            <li class="menu-item"><a href="/contact.html"><span>Contact</span><span class="dot"></span></a></li>
         </ul>
     </nav>
+
+    <script>
+        (function() {
+            // wait for vanilla-tilt to be ready
+            if (typeof VanillaTilt !== 'undefined') {
+                const links = document.querySelectorAll('#main-menu .menu-item a');
+                const isMobile = window.matchMedia('(max-width: 992px)').matches;
+                if (!isMobile) {
+                    VanillaTilt.init(links, {
+                        max: 8,                // max tilt rotation
+                        speed: 400,
+                        scale: 1.02,
+                        glare: true,
+                        "max-glare": 0.3,
+                        gyroscope: false,
+                        perspective: 800,
+                        easing: "cubic-bezier(0.2, 0.9, 0.4, 1)",
+                        reset: true
+                    });
+                }
+                // optional: re‑init on resize (simplified – you can extend)
+                window.addEventListener('resize', function() {
+                    const mobileNow = window.matchMedia('(max-width: 992px)').matches;
+                    links.forEach(link => {
+                        if (link.vanillaTilt) {
+                            if (mobileNow) link.vanillaTilt.destroy();
+                        } else {
+                            if (!mobileNow) VanillaTilt.init(link, {
+                                max: 8, speed: 400, scale: 1.02, glare: true, "max-glare": 0.3,
+                                gyroscope: false, perspective: 800,
+                                easing: "cubic-bezier(0.2, 0.9, 0.4, 1)", reset: true
+                            });
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
 </div>						  
 						  
 						<div class="col-md-2"> 
