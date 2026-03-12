@@ -91,63 +91,84 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 						
 <div class="col-md-7">
-    <!-- Load vanilla-tilt from CDN (if not already loaded) -->
+    <!-- VanillaTilt from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 
     <style>
-        /* === MODERN FOUNDRY MENU – HORIZONTAL, 3D TILT, DOTS === */
+        /* === MODERN FOUNDRY MENU – ALWAYS HORIZONTAL, SCROLL ON MOBILE === */
         #main-menu {
-            perspective: 1200px;
-            gap: 0.75rem !important;
-            flex-wrap: wrap;
+            display: flex;
+            flex-wrap: nowrap;               /* ← crucial: never wrap */
             justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0;
+            padding: 0.5rem 0;
+            list-style: none;
+            overflow-x: auto;                 /* enable horizontal scroll on small screens */
+            overflow-y: hidden;
+            white-space: nowrap;               /* ensure flex children don't wrap */
+            -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+            scrollbar-width: thin;              /* nice thin scrollbar (Firefox) */
+            perspective: 1200px;
+        }
+
+        /* hide scrollbar on webkit but keep functionality (optional) */
+        #main-menu::-webkit-scrollbar {
+            height: 4px;
+        }
+        #main-menu::-webkit-scrollbar-thumb {
+            background: #ffc107;
+            border-radius: 10px;
+        }
+        #main-menu::-webkit-scrollbar-track {
+            background: #2a2a2a;
         }
 
         #main-menu .menu-item {
-            list-style: none;
+            flex: 0 0 auto;                    /* prevent shrinking, keep natural width */
             transform-style: preserve-3d;
         }
 
         #main-menu .menu-item a {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-size: 1.1rem;
             font-weight: 600;
-            padding: 0.7rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             color: #ffffff;
             text-decoration: none;
-            background: #1e1e1e;               /* deep black base */
+            background: #1e1e1e;
             border: 1px solid #3a3a3a;
-            border-radius: 40px;                /* pill shape – modern */
+            border-radius: 40px;
             box-shadow: 0 8px 12px -6px rgba(0,0,0,0.5), 0 0 0 1px rgba(255, 215, 0, 0.2) inset;
             transition: all 0.2s ease;
-            white-space: nowrap;                 /* keep text in one line */
+            white-space: nowrap;                /* text never wraps inside button */
             position: relative;
             overflow: hidden;
-            font-family: 'Ubuntu', sans-serif;  /* matches your site font */
+            font-family: 'Ubuntu', sans-serif;
         }
 
-        /* yellow dot (brand element) */
+        /* yellow dot */
         #main-menu .menu-item a .dot {
             display: inline-block;
             width: 6px;
             height: 6px;
             background-color: #ffc107;
             border-radius: 50%;
-            margin-left: 6px;
+            margin-left: 4px;
             box-shadow: 0 0 8px #ffc107;
             transition: transform 0.2s;
         }
 
-        /* optional icon (can be used, but we keep simple) */
+        /* optional icon */
         #main-menu .menu-item a i {
             font-size: 1.2rem;
             color: #ffc107;
             transition: transform 0.2s;
         }
 
-        /* hover state (fallback, but tilt will also apply) */
         #main-menu .menu-item a:hover {
             background: #2a2a2a;
             border-color: #ffc107;
@@ -166,7 +187,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             box-shadow: 0 0 12px rgba(255, 193, 7, 0.5), 0 8px 12px -6px black;
         }
 
-        /* sand / dot background effect (subtle) */
+        /* sand‑like dot pattern (subtle) */
         #main-menu .menu-item a::before {
             content: '';
             position: absolute;
@@ -180,28 +201,25 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             z-index: 0;
         }
 
-        /* ensure text is above pseudo */
         #main-menu .menu-item a > * {
             position: relative;
             z-index: 1;
         }
 
-        /* === responsive === */
-        @media (max-width: 992px) {
-            #main-menu {
-                gap: 0.5rem !important;
-            }
+        /* responsive: reduce font/padding on very small screens */
+        @media (max-width: 768px) {
             #main-menu .menu-item a {
-                font-size: 0.95rem;
-                padding: 0.5rem 1rem;
-                white-space: nowrap;
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+                gap: 4px;
             }
-            /* disable 3D tilt on mobile via JS (we destroy it) */
         }
+
+        /* disable tilt on mobile (via JS condition) – already handled in script */
     </style>
 
     <nav id="site-navigation" class="main-navigation">
-        <ul id="main-menu" class="menu d-flex justify-content-center m-0 p-0 list-unstyled flex-wrap">
+        <ul id="main-menu" class="menu">
             <li class="menu-item"><a href="/index.html" aria-current="page"><span>Home</span><span class="dot"></span></a></li>
             <li class="menu-item"><a href="/about.html"><span>About Us</span><span class="dot"></span></a></li>
             <li class="menu-item"><a href="/products.html"><span>Products</span><span class="dot"></span></a></li>
@@ -214,13 +232,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
     <script>
         (function() {
-            // wait for vanilla-tilt to be ready
             if (typeof VanillaTilt !== 'undefined') {
                 const links = document.querySelectorAll('#main-menu .menu-item a');
                 const isMobile = window.matchMedia('(max-width: 992px)').matches;
                 if (!isMobile) {
                     VanillaTilt.init(links, {
-                        max: 8,                // max tilt rotation
+                        max: 8,
                         speed: 400,
                         scale: 1.02,
                         glare: true,
@@ -231,7 +248,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
                         reset: true
                     });
                 }
-                // optional: re‑init on resize (simplified – you can extend)
+                // re‑evaluate on resize (simple version)
                 window.addEventListener('resize', function() {
                     const mobileNow = window.matchMedia('(max-width: 992px)').matches;
                     links.forEach(link => {
@@ -250,7 +267,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         })();
     </script>
 </div>						  
-						  
 						<div class="col-md-2"> 
 							<!-- Call To Action -->
 							<div class="social-navigation">
