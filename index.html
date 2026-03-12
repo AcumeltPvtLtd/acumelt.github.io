@@ -90,19 +90,43 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 							</div>
 						</div>
 						
-						<div class="col-md-7"> <!-- Wider column for navigation -->
-							<nav id="site-navigation" class="main-navigation">
-								<ul id="main-menu" class="menu d-flex justify-content-center m-0 p-0 list-unstyled flex-wrap">
-									<li class="menu-item"><a href="/index.html" aria-current="page">Home</a></li>
-									<li class="menu-item"><a href="/about.html">About Us</a></li>
-									<li class="menu-item"><a href="/products.html">Products / Castings</a></li>
-									<li class="menu-item"><a href="/infrastructure.html">Infrastructure</a></li>
-									<li class="menu-item"><a href="/quality.html">Quality Assurance</a></li>
-									<li class="menu-item"><a href="/careers.html">Careers</a></li>
-									<li class="menu-item"><a href="/contact.html">Contact Us</a></li>
-								</ul>
-							</nav>   
-						</div>  
+						<div class="col-md-7"> 
+    <style>
+        /* Custom styles to ensure the links look professional at a larger size */
+        #main-menu .menu-item a {
+            font-size: 1.2rem; /* Increases size (approx 19px-20px) */
+            font-weight: 500;   /* Makes text slightly bolder for readability */
+            padding: 8px 15px;  /* Adds clickable area around the text */
+            color: #333;        /* Standard dark gray; change to your brand color */
+            text-decoration: none;
+            transition: all 0.3s ease; /* Smooth hover transition */
+        }
+
+        #main-menu .menu-item a:hover {
+            color: #007bff;     /* Changes color on hover */
+            background-color: rgba(0,0,0,0.05); /* Light background highlight */
+            border-radius: 4px;
+        }
+
+        /* Responsive adjustment: reduce gap on smaller screens so it doesn't break */
+        @media (max-width: 992px) {
+            #main-menu { gap: 10px !important; }
+            #main-menu .menu-item a { font-size: 1rem; }
+        }
+    </style>
+
+    <nav id="site-navigation" class="main-navigation">
+        <ul id="main-menu" class="menu d-flex justify-content-center m-0 p-0 list-unstyled flex-wrap gap-3">
+            <li class="menu-item"><a href="/index.html" aria-current="page">Home</a></li>
+            <li class="menu-item"><a href="/about.html">About Us</a></li>
+            <li class="menu-item"><a href="/products.html">Products / Castings</a></li>
+            <li class="menu-item"><a href="/infrastructure.html">Infrastructure</a></li>
+            <li class="menu-item"><a href="/quality.html">Quality Assurance</a></li>
+            <li class="menu-item"><a href="/careers.html">Careers</a></li>
+            <li class="menu-item"><a href="/contact.html">Contact Us</a></li>
+        </ul>
+    </nav>   
+</div>  
 						<div class="col-md-2"> 
 							<!-- Call To Action -->
 							<div class="social-navigation">
