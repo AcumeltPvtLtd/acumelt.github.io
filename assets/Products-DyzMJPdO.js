@@ -1,0 +1,11 @@
+import{o as r,q as e,S as i,t as n}from"./index-DzNZSKBA.js";/**
+ * @license lucide-react v0.546.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const c=[["path",{d:"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16",key:"jecpp"}],["rect",{width:"20",height:"14",x:"2",y:"6",rx:"2",key:"i6l2r4"}]],o=r("briefcase",c);/**
+ * @license lucide-react v0.546.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const d=[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["path",{d:"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20",key:"13o1zl"}],["path",{d:"M2 12h20",key:"9i4pu4"}]],a=r("globe",d),x=()=>e.jsx("div",{className:"pt-32 pb-20 bg-white dark:bg-zinc-950 transition-colors duration-300",children:e.jsxs("div",{className:"container mx-auto px-6",children:[e.jsx(i,{subtitle:"Market Presence",title:"Customer Segments",centered:!0}),e.jsx("div",{className:"grid md:grid-cols-3 gap-8",children:[{title:"Automotive",icon:e.jsx(a,{className:"w-8 h-8"}),desc:"Chassis, suspension, and engine components for passenger and commercial vehicles."},{title:"Agriculture",icon:e.jsx(o,{className:"w-8 h-8"}),desc:"Tractor parts, plow components, and irrigation system castings."},{title:"Infrastructure",icon:e.jsx(a,{className:"w-8 h-8"}),desc:"Pipes, valves, and heavy-duty fittings for large-scale construction projects."}].map((t,s)=>e.jsxs(n.div,{initial:{opacity:0,scale:.95},whileInView:{opacity:1,scale:1},viewport:{once:!0},transition:{delay:s*.1},className:"p-12 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-[3rem] group hover:border-brand-orange/30 transition-all text-center",children:[e.jsx("div",{className:"p-5 bg-brand-orange/10 rounded-2xl w-fit text-brand-orange mb-8 mx-auto group-hover:bg-brand-orange group-hover:text-zinc-950 transition-all",children:t.icon}),e.jsx("h4",{className:"text-2xl font-bold text-zinc-950 dark:text-white mb-4",children:t.title}),e.jsx("p",{className:"text-zinc-600 dark:text-zinc-400 text-lg font-light leading-relaxed",children:t.desc})]},t.title))})]})});export{x as default};
