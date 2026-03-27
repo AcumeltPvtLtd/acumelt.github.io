@@ -1,4 +1,4 @@
-import{h as e,x as s,f as h,c as m,o as n}from"./index-D6e9r3Fc.js";function v(o){const t=e.useRef(0),{isStatic:i}=e.useContext(s);e.useEffect(()=>{if(i)return;const a=({timestamp:r,delta:c})=>{t.current||(t.current=r),o(r-t.current,c)};return h.update(a,!0),()=>m(a)},[o])}/**
+import{h as e,x as s,f as h,c as m,o as n}from"./index-V6yQ5MYt.js";function v(o){const t=e.useRef(0),{isStatic:i}=e.useContext(s);e.useEffect(()=>{if(i)return;const a=({timestamp:r,delta:c})=>{t.current||(t.current=r),o(r-t.current,c)};return h.update(a,!0),()=>m(a)},[o])}/**
  * @license lucide-react v0.546.0 - ISC
  *
  * This source code is licensed under the ISC license.
