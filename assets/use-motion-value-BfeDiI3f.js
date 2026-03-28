@@ -1,1 +1,0 @@
-import{u as a,m as u,h as t,x as c}from"./index-CigfoQB6.js";function f(o){const e=a(()=>u(o)),{isStatic:s}=t.useContext(c);if(s){const[,n]=t.useState(o);t.useEffect(()=>e.on("change",n),[])}return e}export{f as u};
